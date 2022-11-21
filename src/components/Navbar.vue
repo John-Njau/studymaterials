@@ -1,6 +1,6 @@
 <template>
   <main>
-    <div id="nav">
+    <div id="nav" class="mb-3 card">
       <!-- <router-link to="/">Home</router-link> | -->
       <span v-if="isLoggedIn">
         <a @click="logout">Logout</a> | <router-link to="/">Home</router-link> |
@@ -8,11 +8,15 @@
         <b-dropdown aria-role="list">
           <template #trigger="{ active }" class="btn is-primary">
             <b-button :icon-right="active ? 'menu-up' : 'menu-down'">
-              Units {{units}}<i class="fa-solid fa-caret-down"></i
+              Units {{ units }}<i class="fa-solid fa-caret-down"></i
             ></b-button>
           </template>
-          <b-dropdown-item aria-role="listitem" v-for="(unit,index) in units" :key="index">
-            <router-link to="/materials/:id">{{unit.name}}</router-link>
+          <b-dropdown-item
+            aria-role="listitem"
+            v-for="(unit, index) in units"
+            :key="index"
+          >
+            <router-link to="/materials/:id">{{ unit.name }}</router-link>
           </b-dropdown-item>
           <b-dropdown-item aria-role="listitem">Another action</b-dropdown-item>
           <b-dropdown-item aria-role="listitem">Something else</b-dropdown-item>
@@ -42,7 +46,7 @@
 </template>
   
   <script>
-import axios from 'axios';
+import axios from "axios";
 export default {
   name: "Navbar",
   data() {
@@ -74,23 +78,22 @@ export default {
     //   await this.$store.dispatch("getUnits");
     //   this.$router.push("/units/:id");
     // },
-      async getLecturers() {
-        await axios
-          .get("/api/lecturers/")
-          .then((response) => {
-            this.lecturers = console.log(response.data);
-          })
-          .catch((error) => {
-            console.log(error);
-          });
-      },
+    async getLecturers() {
+      await axios
+        .get("/api/lecturers/")
+        .then((response) => {
+          this.lecturers = console.log(response.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
 
-    async getUnits(){
-      await axios.get('/api/units/')
-      .then(response => {
+    async getUnits() {
+      await axios.get("/api/units/").then((response) => {
         this.units = response.data;
-      })
-    }
+      });
+    },
   },
 };
 </script>
@@ -99,6 +102,7 @@ export default {
   <style scoped lang="scss">
 #nav {
   padding: 24px;
+  background-color: #f5f5f5;
 
   a {
     font-weight: bold;
