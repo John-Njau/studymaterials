@@ -24,6 +24,7 @@ const routes = [
     name: "unit",
     component: Unit,
     meta: { requiresAuth: true },
+    props: true,
   },
   // {
   //   path: "/:catchAll(.*)",
@@ -47,6 +48,7 @@ const routes = [
     name: "lecturer",
     component: Lecturer,
     meta: { requiresAuth: true },
+    props: true,
   },
   {
     path: "/material/:id",
