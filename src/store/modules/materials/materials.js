@@ -4,45 +4,57 @@ export default {
   state: {
     materials: [],
     material: {},
+    lecturers: [],
+    lecturer: {},
+    units: [],
     unit: {},
   },
   getters: {},
- 
+
   actions: {
-    async getMaterials() {
+    async getMaterials({ commit }) {
       await axios
-        .get("api/materials")
-        .then((response) => (this.materials = response.data))
-        .catch(error => console.log(error))
-        .finally(() => commit("setMaterials", this.materials));
+        .get("/api/v1/materials/")
+        .then((response) => {
+          commit("SET_MATERIALS", response.data);
+          console.log(response.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     },
-    async getLecturers({ commit },){
+    async getLecturers({ commit }) {
       await axios
-        .get("api/lecturers")
-        .then((response) => (this.lecturer = response.data))
-        .catch(error => console.log(error))
-        // .finally(() => commit("setLecturer", this.lecturer));
+        .get("/api/v1/lecturers/")
+        .then((response) => {
+          commit("SET_LECTURERS", response.data);
+          console.log(response.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     },
-    async getUnits({ commit },){
+    async getUnits({ commit }) {
       await axios
-        .get("api/units")
-        .then((response) => 
-        (this.units = response.data)
-        
-        )
-        .catch(error => console.log(error))
-        // .finally(() => commit("setUnits", this.units));
-    }
+        .get("/api/v1/units/")
+        .then((response) => {
+          commit("SET_UNITS", response.data);
+          console.log(response.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
   },
   mutations: {
-    setMaterials(state, materials) {
+    SET_MATERIALS(state, materials) {
       state.materials = materials;
     },
-    setLecturer(state, lecturer) {
-      state.lecturer = lecturer;
+    SET_LECTURERS(state, lecturers) {
+      state.lecturers = lecturers;
     },
-    setUnits(state, units) {
+    SET_UNITS(state, units) {
       state.units = units;
-    }
+    },
   },
 };
