@@ -10,16 +10,16 @@ import "bulma/css/bulma.css";
 Vue.config.productionTip = false
 axios.defaults.baseURL="http://127.0.0.1:8000/"
 
-// axios.interceptors.response.use(undefined, function (error) {
-//   if (error) {
-//     const originalRequest = error.config;
-//     if (error.response.status === 401 && !originalRequest._retry) {
-//       originalRequest._retry = true;
-//       store.dispatch("LogOut");
-//       return router.push("/login");
-//     }
-//   }
-// });
+axios.interceptors.response.use(undefined, function (error) {
+  if (error) {
+    const originalRequest = error.config;
+    if (error.response.status === 401 && !originalRequest._retry) {
+      originalRequest._retry = true;
+      store.dispatch("LogOut");
+      return router.push("/login");
+    }
+  }
+});
 
 Vue.prototype.$http = axios;
 const token = localStorage.getItem("access_token");

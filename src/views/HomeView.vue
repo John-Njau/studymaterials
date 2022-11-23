@@ -1,6 +1,16 @@
 <template>
   <main class="home container mt-5">
-    <!-- {{ materials }} -->
+    <div>
+      {{ materials}}
+    </div>
+    <div>
+      {{ units }}
+    </div>
+
+    <div>
+      {{ lecturers }}
+    </div>
+
     <b-message
       title="Note"
       type="is-warning"
@@ -10,13 +20,11 @@
       These materials will keep being updated as the semester progresses.
     </b-message>
     <section class="columns">
-      <div v-for="pdf in materials" :key="pdf.id" class="column is-half">
-        <!-- <p>{{ pdf.unit_name }}</p> -->
-        <!-- <p>{{ pdf.lecturer }}</p> -->
-        <!-- download material -->
-        <!-- <a :href="pdf.material" download>Download</a> -->
-        <!-- <embed :src="pdf.material" type=""> -->
-        <!-- <p>{{ pdf.material }}</p> -->
+      <div
+        v-for="pdf in materials"
+        :key="pdf.id"
+        class="column is-half"
+      >
         <div class="card">
           <div class="card-image">
             <figure class="image is-4by3">
@@ -57,7 +65,6 @@
 </template>
 
 <script>
-import materials from "@/store/modules/materials/materials";
 import { mapGetters, mapActions, mapMutations } from "vuex";
 import axios from "axios";
 import Footer from "@/components/Footer.vue";
@@ -66,7 +73,7 @@ export default {
   data() {
     return {
       materials: [],
-      lecturers: [],
+      // lecturers: [],
     };
   },
   name: "HomeView",
@@ -76,31 +83,30 @@ export default {
   mounted() {
     // this.$store.dispatch("getMaterials");
     this.getMaterials();
+    // this.getLecturers();
   },
   computed: {
-    // ...mapActions("materials", ["getMaterials"]),
+    // lecturers() {
+    //   return this.$store.state.lecturers;
+    // },
+    // units() {
+    //   return this.$store.state.units;
+    // },
+    data() {
+      return this.$store.state.materials;
+    },
   },
   methods: {
     async getMaterials() {
-      await axios
-        .get("/api/materials/")
+      await axios.get(
+        "/api/v1/materials/")
         .then((response) => {
           this.materials = response.data;
         })
         .catch((error) => {
           console.log(error);
         });
-    },
-    async getLecturers() {
-      await axios
-        .get("/api/lecturers/")
-        .then((response) => {
-          this.lecturers = response.data;
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    },
+      },
   },
 };
 </script>

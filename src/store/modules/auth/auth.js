@@ -21,14 +21,14 @@ export default {
     },
     async LogIn({ commit }, user) {
       await axios.post("api/token/", user)
-        .then((response) => {
-          const token = response.data.access;
-          localStorage.setItem("access_token", token);
-          axios.defaults.headers.common["Authorization"] = token;
+      .then((response) => {
+        const token = response.data.access;
+        localStorage.setItem("access_token", token);
+        axios.defaults.headers.common["Authorization"] = token;
 
-          commit("auth_success", token);
-          console.log(token);
-        })
+        commit("auth_success", token);
+        console.log(token);
+      })
       await commit("setUser", user.get("username"));
     },
     async LogOut({ commit }) {
