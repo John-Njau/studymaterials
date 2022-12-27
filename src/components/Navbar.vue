@@ -77,12 +77,11 @@ export default {
       await this.$store.dispatch("LogOut");
       this.$router.push("/login");
     },
-    async getUnits() {
-      await axios.get("/api/units/").then((response) => {
-        this.units = response.data;
-      });
-    },
-    // ...mapActions(['getLecturers'])
+    // async getUnits() {
+    //   await axios.get("/api/units/").then((response) => {
+    //     this.units = response.data;
+    //   });
+    // },
   },
 };
 </script>

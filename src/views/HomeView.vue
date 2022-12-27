@@ -1,7 +1,7 @@
 <template>
   <main class="home container mt-5">
     <div>
-      {{ materials}}
+      <!-- {{ materials}} -->
     </div>
     <div>
       {{ units }}
@@ -72,8 +72,9 @@ import Footer from "@/components/Footer.vue";
 export default {
   data() {
     return {
-      materials: [],
+      // materials: [],
       // lecturers: [],
+      // units: [],
     };
   },
   name: "HomeView",
@@ -81,33 +82,40 @@ export default {
     Footer,
   },
   mounted() {
-    // this.$store.dispatch("getMaterials");
-    this.getMaterials();
+    this.$store.dispatch("getUnits");
+    this.$store.dispatch("getLecturers");
+    this.$store.dispatch("getMaterials");
+    // this.getMaterials();
+
     // this.getLecturers();
   },
   computed: {
-    // lecturers() {
-    //   return this.$store.state.lecturers;
-    // },
-    // units() {
-    //   return this.$store.state.units;
-    // },
-    data() {
+    lecturers() {
+      return this.$store.state.lecturers;
+    },
+    units() {
+      return this.$store.state.units;
+    },
+    materials() {
       return this.$store.state.materials;
     },
   },
   methods: {
-    async getMaterials() {
-      await axios.get(
-        "/api/v1/materials/")
-        .then((response) => {
-          this.materials = response.data;
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+    // async getMaterials() {
+    //   await axios.get(
+    //     "/api/v1/materials/")
+    //     .then((response) => {
+    //       this.materials = response.data;
+    //     })
+    //     .catch((error) => {
+    //       console.log(error);
+    //     });
       },
-  },
+      // ...mapActions(["getUnits", "getLecturers"]),
+      // allUnits(){
+      //   this.$store.dispatch("getUnits");
+      // }
+  // },
 };
 </script>
 <style>

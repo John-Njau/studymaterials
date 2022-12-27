@@ -12,7 +12,7 @@ export default {
   // dispatch other actions
   actions: {
     async Register({ dispatch }, form) {
-      await axios.post("api/auth/users/", form);
+      await axios.post("api/v1/auth/", form);
       let userForm = new FormData();
       userForm.append("username", form.username);
       userForm.append("password", form.password);

@@ -1,6 +1,6 @@
 <template>
   <main>
-    Hi User!
+    Hi User! {{ username }}
   </main>
 </template>
 

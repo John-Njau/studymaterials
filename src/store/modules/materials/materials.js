@@ -3,11 +3,11 @@ import axios from "axios";
 export default {
   state: {
     materials: [],
-    material: {},
+    // material: {},
     lecturers: [],
-    lecturer: {},
+    // lecturer: {},
     units: [],
-    unit: {},
+    // unit: {},
   },
   getters: {},
 
