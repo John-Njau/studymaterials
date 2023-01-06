@@ -4,7 +4,12 @@
       <form @submit.prevent="submit" class="card">
         <div class="field">
           <!-- <label class="label" for="username">username:</label> -->
-          <input type="text" placeholder="Username"  name="username" v-model="form.username" />
+          <input
+            type="text"
+            placeholder="Username"
+            name="username"
+            v-model="form.username"
+          />
         </div>
         <div class="field">
           <!-- <label class="label" for="password">Password:</label> -->
@@ -21,7 +26,7 @@
           <p>Don't have an account? <a href="register" ><p class="button is-small" type="submit">Sign up</p></a> </p>
         </div> -->
       </form>
-      <p v-if="showError" id="error">username or Password is incorrect</p>
+      <p v-if="showError" id="error">Incorrect username or Password</p>
     </div>
   </div>
 </template>
@@ -46,6 +51,7 @@ export default {
     async submit() {
       const User = new FormData();
       User.append("username", this.form.username);
+      // console.log(this.form.username);
       User.append("password", this.form.password);
 
       try {

@@ -19,23 +19,27 @@ export default {
 
       await dispatch("LogIn", userForm);
     },
-    async LogIn({ commit }, user) {
-      await axios.post("api/token/", user)
-      .then((response) => {
+    async LogIn({ commit }, user, payload) {
+      await axios.post("api/token/", user).then((response) => {
         const token = response.data.access;
         localStorage.setItem("access_token", token);
         axios.defaults.headers.common["Authorization"] = token;
 
         commit("auth_success", token);
         console.log(token);
-      })
+      });
       await commit("setUser", user.get("username"));
+      localStorage.setItem("username", user.get("username"));
     },
     async LogOut({ commit }) {
       let user = null;
       commit("logout", user);
       localStorage.removeItem("access_token");
       delete axios.defaults.headers.common["Authorization"];
+    },
+    loggedInUserDetails({ commit }, payload) {
+      commit("setUser", payload);
+      console.log(payload);
     },
   },
   // commit mutations, mutate the state
@@ -51,6 +55,6 @@ export default {
     },
     auth_success(state, token) {
       state.accessToken = token;
-    }
+    },
   },
 };

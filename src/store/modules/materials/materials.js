@@ -3,11 +3,11 @@ import axios from "axios";
 export default {
   state: {
     materials: [],
-    // material: {},
+    material: {},
     lecturers: [],
-    // lecturer: {},
+    lecturer: {},
     units: [],
-    // unit: {},
+    unit: {},
   },
   getters: {},
 
@@ -34,6 +34,14 @@ export default {
           console.log(error);
         });
     },
+    getLecturer({ commit }, payload) {
+      axios
+      .get(`/api/v1/lecturers/${payload}/`)
+      .then((response) => {
+        commit("SET_LECTURER", response.data);
+        console.log(response.data);
+      })
+    },
     async getUnits({ commit }) {
       await axios
         .get("/api/v1/units/")
@@ -52,6 +60,9 @@ export default {
     },
     SET_LECTURERS(state, lecturers) {
       state.lecturers = lecturers;
+    },
+    SET_LECTURER(state, lecturer) {
+      state.lecturer = lecturer;
     },
     SET_UNITS(state, units) {
       state.units = units;

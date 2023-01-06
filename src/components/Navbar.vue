@@ -3,8 +3,10 @@
     <div id="nav" class="mb-3 card">
       <span v-if="isLoggedIn">
         <a @click="logout">Logout</a> | <router-link to="/">Home</router-link> |
-        <router-link to="/profile">Profile</router-link> |
-        <b-dropdown aria-role="list">
+        <router-link to="/profile">Profile</router-link> | 
+        <router-link to="/units">Units</router-link> |
+        <router-link to="/lecturers">Lecturers</router-link> 
+        <!-- <b-dropdown aria-role="list">
           <template #trigger="{ active }" class="btn is-primary">
             <b-button :icon-right="active ? 'menu-up' : 'menu-down'">
               Units <i class="fa-solid fa-caret-down"></i
@@ -15,7 +17,9 @@
             v-for="(unit, index) in data.units"
             :key="index"
           >
-            <router-link :to="{name: 'unit', params:{id:unit.id}}">{{ unit.name }}</router-link>
+            <router-link :to="{ name: 'unit', params: { id: unit.id } }">{{
+              unit.name
+            }}</router-link>
           </b-dropdown-item>
         </b-dropdown>
         |
@@ -31,9 +35,12 @@
             v-for="(lecturer, index) in data.lecturers"
             :key="index"
           >
-            <router-link :to="{name: 'lecturer', params:{id:lecturer.id}}">{{ lecturer.name }}</router-link>
+            <router-link
+              :to="{ name: 'lecturer', params: { id: lecturer.id } }"
+              >{{ lecturer.name }}</router-link
+            >
           </b-dropdown-item>
-        </b-dropdown>
+        </b-dropdown> -->
       </span>
       <span v-else>
         <router-link to="/register">Sign up</router-link> |
@@ -49,11 +56,11 @@ import { mapActions } from "vuex";
 
 export default {
   name: "Navbar",
-  data() {
-    return {
-      // units: [],
-    };
-  },
+  // data() {
+  //   return {
+  //     // units: [],
+  //   };
+  // },
   computed: {
     isLoggedIn: function () {
       return this.$store.getters.isAuthenticated;
@@ -68,10 +75,10 @@ export default {
       return this.$store.state.materials;
     },
   },
-  mounted() {
-    // this.$store.dispatch("getLecturers");
-    // this.$store.dispatch("getUnits");
-  },
+  // mounted() {
+  // this.$store.dispatch("getLecturers");
+  // this.$store.dispatch("getUnits");
+  // },
   methods: {
     async logout() {
       await this.$store.dispatch("LogOut");
