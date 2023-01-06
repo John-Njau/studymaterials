@@ -1,0 +1,7 @@
+TODO: 
+1. Navbar fix and rearrange
+2. Style the images to be same size, units, lecs, materials
+3. Look for default image for PDFs
+4. Link lecturers in home and pdfs page to lecturer page
+5. Link units in home and pdfs page to unit page
+6.When the btn is clicked. unit details and all pdfs for that unit should be populated

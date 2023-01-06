@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section class="container mt-5">
     <!-- All lecturers -->
     <div class="columns is-multiline">
       <!-- {{ lecturers }} -->
@@ -9,18 +9,26 @@
         :key="lecturer.id"
       >
         <div class="card">
-          <div class="card-image">
-            <figure class="image is-4by3">
-              <img :src="lecturer.image" alt="Placeholder image" />
-            </figure>
-          </div>
+          <template v-if="lecturer.lecturer_image">
+            <div class="card-image">
+              <figure class="image is-4by3">
+                <img
+                  :src="lecturer.lecturer_image"
+                  :alt="lecturer.lecturer_image"
+                />
+              </figure>
+            </div>
+          </template>
+          <template v-else>
+            <div>No Image</div>
+          </template>
           <div class="card-content">
-            <div class="media">
-              <div class="media-left">
-                {{ lecturer.name }}
-                <p>{{ lecturer.unit }}</p>
-                <p>{{ lecturer.email }}</p>
-                <p>{{ lecturer.phone }}</p>
+            <div class="">
+              <div class="">
+                <p>{{ lecturer.id }}</p>
+                <p>{{ lecturer.lecturer_name }}</p>
+                <p>{{ lecturer.lecturer_email }}</p>
+                <p>{{ lecturer.lecturer_phone }}</p>
               </div>
             </div>
           </div>

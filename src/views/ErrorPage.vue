@@ -5,10 +5,6 @@
     <b-button>
       <router-link to="/" class="btn">Home</router-link>
     </b-button>
-    |
-    <b-button>
-      <router-link to="/new-unit">New Unit</router-link>
-    </b-button>
   </section>
 </template>
   
@@ -20,11 +16,12 @@ export default {
   
   <style>
 .error-page {
-  display: flex;
+  /* display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  height: 100vh;
-  width: 100vw;
+  align-items: center; */
+  margin: auto auto;
+  /* height: 100vh; */
+  /* width: 100vw; */
 }
 </style>

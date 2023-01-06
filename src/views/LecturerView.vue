@@ -4,10 +4,10 @@
     {{ lecturer  }}
     <p>lec id {{ id }}</p>
     <div v-if="lecturer">
-      <p>{{ lecturer.name }}</p>
-      <p>{{ lecturer.email }}</p>
-      <p>{{ lecturer.phone }}</p>
-      <p>{{ lecturer.unit }}</p>
+      <p>{{ lecturer.id }}</p>
+      <p>{{ lecturer.lecturer_name }}</p>
+      <p>{{ lecturer.lecturer_email }}</p>
+      <p>{{ lecturer.lecturer_phone }}</p>
     </div>
     <div v-else >
       <p>Lecturer Details Loading...</p>

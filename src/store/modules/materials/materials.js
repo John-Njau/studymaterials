@@ -9,7 +9,8 @@ export default {
     units: [],
     unit: {},
   },
-  getters: {},
+  getters: {
+  },
 
   actions: {
     async getMaterials({ commit }) {
