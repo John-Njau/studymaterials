@@ -17,7 +17,7 @@ export default {
   props: ["id"],
   computed: {
     unit() {
-      return this.$store.state.materials.unit;
+      return this.$store.state.materials.units;
     },
   },
 };

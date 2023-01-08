@@ -10,27 +10,50 @@
       >
         <div class="card">
           <template v-if="lecturer.lecturer_image">
-            <div class="card-image">
-              <figure class="image is-4by3">
-                <img
-                  :src="lecturer.lecturer_image"
-                  :alt="lecturer.lecturer_image"
-                />
-              </figure>
-            </div>
+            <figure class="lecturer-image">
+              <img
+                :src="lecturer.lecturer_image"
+                :alt="lecturer.lecturer_image"
+              />
+            </figure>
           </template>
           <template v-else>
-            <div>No Image</div>
+            <figure class="lecturer-image image">
+              <img
+                src="../assets/user-icon-png-pnglogocom-133466.png"
+                alt="lecturer.lecturer_name"
+              />
+            </figure>
           </template>
+
           <div class="card-content">
-            <div class="">
-              <div class="">
-                <p>{{ lecturer.id }}</p>
-                <p>{{ lecturer.lecturer_name }}</p>
-                <p>{{ lecturer.lecturer_email }}</p>
-                <p>{{ lecturer.lecturer_phone }}</p>
+            <!-- <p>{{ lecturer.id }}</p> -->
+            <p>
+              <span class="is-size-6 has-text-weight-semibold">Name: </span>
+              {{ lecturer.lecturer_name }}
+            </p>
+            <template v-if="lecturer.lecturer_email">
+              <p>
+                <span class="is-size-6 has-text-weight-semibold">Email: </span>
+                {{ lecturer.lecturer_email }}
+              </p>
+            </template>
+            <template v-else>
+              <div>No Email</div>
+            </template>
+            <template v-if="lecturer.lecturer_phone">
+              <div>
+                <p>
+                  <span class="is-size-6 has-text-weight-semibold"
+                    >Phone:
+                  </span>
+                  {{ lecturer.lecturer_phone }}
+                </p>
               </div>
-            </div>
+            </template>
+            <template v-else>
+              <div>No contact</div>
+            </template>
           </div>
         </div>
       </div>
@@ -52,4 +75,16 @@ export default {
 </script>
 
 <style>
+.lecturer-image {
+  width: 20%;
+  margin: auto;
+  /* height: 200px; */
+  /* object-fit: cover; */
+}
+.card-content{
+  padding: 1rem;
+  align-items: center;
+  text-align: center;
+
+}
 </style>
