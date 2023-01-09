@@ -8,7 +8,8 @@ import "buefy/dist/buefy.css";
 import "bulma/css/bulma.css";
 
 Vue.config.productionTip = false
-axios.defaults.baseURL="http://127.0.0.1:8000/"
+// axios.defaults.baseURL="http://127.0.0.1:8000/"
+axios.defaults.baseURL = "https://studypal-production.up.railway.app/"
 
 axios.interceptors.response.use(undefined, function (error) {
   if (error) {
